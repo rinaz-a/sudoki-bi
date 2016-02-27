@@ -16,16 +16,14 @@
 #include "sudoki-bi.h"
 
 // Fonction d'affichage
-void affichage (int **grille)
+void	my_display(int **grille)
 {
+  int	idx[2];
   for (int i=0; i<9; i++)
     {
-      for (int j=0; j<9; j++)
-	{
-	  printf( ((j+1)%3) ? "%d " : "%d|", grille[i][j]);
-	}
+      while (idx[1]++ < 9)
+	  printf(" %d", grille[i][j]);
       putchar('\n');
-      if (!((i+1)%3))
 	printf("------------------");
     }
   puts("\n\n");

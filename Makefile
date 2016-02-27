@@ -5,10 +5,10 @@
 ## Login   <rinaz_a@epitech.net>
 ## 
 ## Started on  Fri Dec  4 16:34:29 2015 selim rinaz
-## Last update Sat Feb 27 12:20:47 2016 
+## Last update Sat Feb 27 19:28:42 2016 
 ##
 
-CC	= gcc -g
+CC	= gcc -g -g3 -ggdb
 
 RM	= rm -f
 
