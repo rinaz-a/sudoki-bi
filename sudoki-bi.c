@@ -5,30 +5,29 @@
 ** Login   <rinaz_a@epitech.net>
 ** 
 ** Started on  Sat Feb 27 11:46:15 2016 selim rinaz
-** Last update Sat Feb 27 21:14:48 2016 
+** Last update Sat Feb 27 21:40:59 2016 
 */
 
 #include <stdio.h>
-
-#include <stdbool.h>
-
 #include <stdlib.h>
 #include "sudoki-bi.h"
 
-// Fonction d'affichage
-void affichage (int **grille)
+void	my_putint_2d(int **grid)
 {
-  for (int i=0; i<9; i++)
+  int	idx[2];
+
+  idx[0] = 0;
+  idx[1] = 0;
+  printf("|------------------|\n|");
+  while (idx[0] < 9)
     {
-      for (int j=0; j<9; j++)
-	{
-	  printf( ((j+1)%3) ? "%d " : "%d|", grille[i][j]);
-	}
-      putchar('\n');
-      if (!((i+1)%3))
-	printf("------------------");
+      while (idx[1] < 9)
+	  printf(" %d", grid[idx[0]][idx[1]++]);
+      printf("|\n|");
+      idx[1] = 0;
+      idx[0]++;
     }
-  puts("\n\n");
+  printf("------------------|\n");
 }
 
 bool absentSurLigne (int k, int **grille, int i)
@@ -139,10 +138,6 @@ int	main()
   printf("basic map\n\n");
   my_putstr_2d(tab);
   grid = create_int_2d(tab);
-  printf("Grille avant\n");
-  affichage(grid);
-  estValide(grid,0);
-  printf("Grille apres\n");
-  affichage(grid);
+  my_display(grid);
   return (0);
 }
