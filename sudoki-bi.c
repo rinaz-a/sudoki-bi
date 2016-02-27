@@ -5,7 +5,7 @@
 ** Login   <rinaz_a@epitech.net>
 ** 
 ** Started on  Sat Feb 27 11:46:15 2016 selim rinaz
-** Last update Sat Feb 27 22:36:33 2016 rouill_d
+** Last update Sat Feb 27 23:56:29 2016 
 */
 
 #include <stdbool.h>
@@ -31,54 +31,74 @@ void	my_putint_2d(int **grid)
   printf("------------------|\n");
 }
 
-bool	check_line(int k, int **grid, int i)
+int	check_line(int k, int **grid, int i)
 {
-  for (int j=0; j < 9; j++)
-    if (grid[i][j] == k)
-      return false;
-  return true;
+  int	j;
+
+  j = 0;
+  while (j < 9)
+    if (grid[i][j++] == k)
+      return (0);
+  return (1);
 }
 
-bool	check_collumns(int k, int **grid, int j)
+int	check_collumns(int k, int **grid, int j)
 {
-  for (int i=0; i < 9; i++)
-    if (grid[i][j] == k)
-      return false;
-  return true;
+  int	i;
+
+  i = 0;
+  while (i < 9)
+    if (grid[i++][j] == k)
+      return (0);
+  return (1);
 }
 
-bool	check_square(int k, int **grid, int i, int j)
+int	check_square(int k, int **grid, int i, int j)
 {
-  int _i = i-(i%3), _j = j-(j%3);
-  for (i=_i; i < _i+3; i++)
-    for (j=_j; j < _j+3; j++)
-      if (grid[i][j] == k)
-	return false;
-  return true;
+  int	idx[2];
+
+  idx[0] = i-(i%3);
+  idx[1] = j-(j%3);
+  i = idx[0];
+  while (i < (idx[0] + 3))
+    {
+      j = idx[1];
+      while (j < (idx[1] + 3))
+	{
+	  if (grid[i][j] == k)
+	    return (0);
+	  j++;
+	}
+      i++;
+    }
+  return (1);
 }
 
-bool	check_grid(int **grid, int position)
+int	check_grid(int **grid, int position)
 {
+  int	i;
+  int	j;
+  int	k;
+
+  k = 1;
+  i = position/9;
+  j = position%9;
   if (position == 9*9)
-    return true;
-
-  int	i = position/9, j = position%9;
-
+    return (1);
   if (grid[i][j] != 0)
-    return check_grid(grid, position+1);
-
-  for (int k=1; k <= 9; k++)
+    return (check_grid(grid, position + 1));
+  while (k <= 9)
     {
       if (check_line(k,grid,i) && check_collumns(k,grid,j) && check_square(k,grid,i,j))
 	{
 	  grid[i][j] = k;
-
-	  if (check_grid(grid, position+1) )
-	    return true;
+	  if (check_grid(grid, position + 1))
+	    return (1);
 	}
+      k++;
     }
   grid[i][j] = 0;
-  return false;
+  return (0);
 }
 
 char	**fill_my_char_2d()
@@ -104,13 +124,12 @@ int    	**create_int_2d(char **tab)
   int  	x[2];
   int	**grid;
 
-  x[0] = 2;
   y[0] = 1;
   x[1] = 0;
   y[1] = 0;
   if ((grid = malloc(sizeof(int *) * 9)) == NULL)
     exit(EXIT_FAILURE);
-  while (x[0] <= 19 && y[0] <= 10)
+  while ((x[0] = 2) && (y[0] <= 10))
     {
       if ((grid[y[1]] = malloc(sizeof(int) * 9)) == NULL)
 	exit(EXIT_FAILURE);
@@ -124,7 +143,6 @@ int    	**create_int_2d(char **tab)
       y[0]++;
       y[1]++;
       x[1] = 0;
-      x[0] = 2;
     }
   return (grid);
 }
@@ -135,8 +153,6 @@ int	main()
   int	**grid;
 
   tab = fill_my_char_2d();
-  printf("basic map\n\n");
-  my_putstr_2d(tab);
   grid = create_int_2d(tab);
   check_grid(grid, 0);
   my_putint_2d(grid);
