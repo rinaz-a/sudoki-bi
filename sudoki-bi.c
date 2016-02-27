@@ -5,9 +5,10 @@
 ** Login   <rinaz_a@epitech.net>
 ** 
 ** Started on  Sat Feb 27 11:46:15 2016 selim rinaz
-** Last update Sat Feb 27 21:14:24 2016 rouill_d
+** Last update Sat Feb 27 22:36:33 2016 rouill_d
 */
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "sudoki-bi.h"
@@ -63,7 +64,7 @@ bool	check_grid(int **grid, int position)
 
   int	i = position/9, j = position%9;
 
-  if (grille[i][j] != 0)
+  if (grid[i][j] != 0)
     return check_grid(grid, position+1);
 
   for (int k=1; k <= 9; k++)
@@ -137,6 +138,7 @@ int	main()
   printf("basic map\n\n");
   my_putstr_2d(tab);
   grid = create_int_2d(tab);
-  my_display(grid);
+  check_grid(grid, 0);
+  my_putint_2d(grid);
   return (0);
 }
