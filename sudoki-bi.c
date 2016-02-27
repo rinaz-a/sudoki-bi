@@ -5,7 +5,7 @@
 ** Login   <rinaz_a@epitech.net>
 ** 
 ** Started on  Sat Feb 27 11:46:15 2016 selim rinaz
-** Last update Sat Feb 27 21:40:59 2016 
+** Last update Sat Feb 27 21:14:24 2016 rouill_d
 */
 
 #include <stdio.h>
@@ -30,54 +30,53 @@ void	my_putint_2d(int **grid)
   printf("------------------|\n");
 }
 
-bool absentSurLigne (int k, int **grille, int i)
+bool	check_line(int k, int **grid, int i)
 {
   for (int j=0; j < 9; j++)
-    if (grille[i][j] == k)
+    if (grid[i][j] == k)
       return false;
   return true;
 }
 
-bool absentSurColonne (int k, int **grille, int j)
+bool	check_collumns(int k, int **grid, int j)
 {
   for (int i=0; i < 9; i++)
-    if (grille[i][j] == k)
+    if (grid[i][j] == k)
       return false;
   return true;
 }
 
-bool absentSurBloc (int k, int **grille, int i, int j)
+bool	check_square(int k, int **grid, int i, int j)
 {
-  int _i = i-(i%3), _j = j-(j%3);  // ou encore : _i = 3*(i/3), _j = 3*(j/3);
+  int _i = i-(i%3), _j = j-(j%3);
   for (i=_i; i < _i+3; i++)
     for (j=_j; j < _j+3; j++)
-      if (grille[i][j] == k)
+      if (grid[i][j] == k)
 	return false;
   return true;
 }
 
-bool estValide (int **grille, int position)
+bool	check_grid(int **grid, int position)
 {
   if (position == 9*9)
     return true;
 
-  int i = position/9, j = position%9;
+  int	i = position/9, j = position%9;
 
   if (grille[i][j] != 0)
-    return estValide(grille, position+1);
+    return check_grid(grid, position+1);
 
   for (int k=1; k <= 9; k++)
     {
-      if (absentSurLigne(k,grille,i) && absentSurColonne(k,grille,j) && absentSurBloc(k,grille,i,j))
+      if (check_line(k,grid,i) && check_collumns(k,grid,j) && check_square(k,grid,i,j))
 	{
-	  grille[i][j] = k;
+	  grid[i][j] = k;
 
-	  if ( estValide (grille, position+1) )
+	  if (check_grid(grid, position+1) )
 	    return true;
 	}
     }
-  grille[i][j] = 0;
-
+  grid[i][j] = 0;
   return false;
 }
 
