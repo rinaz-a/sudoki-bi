@@ -5,7 +5,7 @@
 ** Login   <rinaz_a@epitech.net>
 ** 
 ** Started on  Sat Feb 27 11:47:38 2016 selim rinaz
-** Last update Sat Feb 27 11:51:10 2016 
+** Last update Sat Feb 27 12:18:35 2016 
 */
 
 #ifndef SUDOKI_BI_H_
@@ -29,8 +29,13 @@ typedef struct	s_tmp
   int		pos;
 }		t_tmp;
 
-char   	*get_next_line(const int fd);
-char   	*alloc(int idx, int pos, char *buf, char *line);
-int	main();
+char		*get_next_line(const int fd);
+char		*alloc(int idx, int pos, char *buf, char *line);
+int		my_strlen(char *str);
+void		my_putchar(char c);
+void		my_putstr(char *str);
+void		my_putstr_2d(char **str);
+void		my_puterr(char *str);
+int		main();
 
 #endif /* !SUDOKI_BI_H_ */

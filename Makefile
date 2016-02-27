@@ -5,21 +5,22 @@
 ## Login   <rinaz_a@epitech.net>
 ## 
 ## Started on  Fri Dec  4 16:34:29 2015 selim rinaz
-## Last update Fri Feb 26 18:17:15 2016 rouill_d
+## Last update Sat Feb 27 12:20:47 2016 
 ##
 
 CC	= gcc -g
 
 RM	= rm -f
 
-CFLAGS	+= -Wextra -Wall -Werror
+#CFLAGS	+= -Wextra -Wall -Werror
 #CFLAGS	+=-ansi -pedantic
 CFLAGS	+= -I.
 
 NAME	= sudoki-bi
 
-SRCS	= sudoki-bi.c		\
-	  get_next_line.c
+SRCS	= get_next_line.c	\
+	  sudoki-bi.c		\
+	  my_essentials.c
 
 OBJS	= $(SRCS:.c=.o)
 
