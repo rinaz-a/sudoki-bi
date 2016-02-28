@@ -5,12 +5,12 @@
 ** Login   <rinaz_a@epitech.net>
 ** 
 ** Started on  Wed Jan 13 20:48:37 2016 selim rinaz
-** Last update Sat Feb 27 11:48:40 2016 
+** Last update Sun Feb 28 01:10:36 2016 
 */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "sudoki-bi.h"
+#include "sudoki_bi.h"
 
 char		*alloc(int idx, int pos, char *buf, char *line)
 {

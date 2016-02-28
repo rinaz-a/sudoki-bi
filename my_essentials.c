@@ -5,10 +5,10 @@
 ** Login   <rinaz_a@epitech.net>
 ** 
 ** Started on  Tue Dec  8 16:22:05 2015 selim rinaz
-** Last update Sat Feb 27 12:17:45 2016 
+** Last update Sun Feb 28 01:10:30 2016 
 */
 
-#include "sudoki-bi.h"
+#include "sudoki_bi.h"
 #include "unistd.h"
 
 int	my_strlen(char *str)

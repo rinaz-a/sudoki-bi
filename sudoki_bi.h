@@ -5,7 +5,7 @@
 ** Login   <rinaz_a@epitech.net>
 ** 
 ** Started on  Sat Feb 27 11:47:38 2016 selim rinaz
-** Last update Sat Feb 27 12:18:35 2016 
+** Last update Sun Feb 28 01:08:46 2016 
 */
 
 #ifndef SUDOKI_BI_H_
@@ -36,6 +36,13 @@ void		my_putchar(char c);
 void		my_putstr(char *str);
 void		my_putstr_2d(char **str);
 void		my_puterr(char *str);
+int		check_line(int k, int **grid, int i);
+int		check_collumns(int k, int **grid, int j);
+int		check_square(int k, int **grid, int i, int j);
+int		check_grid(int **grid, int position);
+char		**fill_my_char_2d();
+int		**create_int_2d(char **tab);
+void		my_putint_2d(int **grid);
 int		main();
 
 #endif /* !SUDOKI_BI_H_ */
